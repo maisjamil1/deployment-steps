@@ -121,3 +121,7 @@ INSTALLED_APPS = [
 - `python manage.py runserver`
 -in the localhost add items to the db
 - go to the `SQL Browser` check if the data are there `SELECT * FROM shop_shop;`
+_____________________________________________________________________________
+## Docker
+- `touch Dockerfile`
+- 
