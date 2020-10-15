@@ -116,4 +116,5 @@ INSTALLED_APPS = [
 ]
 
 ```
-
+- `python manage.py makemigrations shop`
+- `python manage.py  migrate`
