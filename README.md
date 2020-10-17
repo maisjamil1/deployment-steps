@@ -185,4 +185,50 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 ```
+- add the .env variables to  `settings.py` by add :
+```python 
+import os
+import environ
+
+env = environ.Env(
+    # DEBUG is Flase by default
+    DEBUG = (bool, False)
+)
+environ.Env.read_env()
+.....
+....
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
+
+```
+also in `settings.py` edit :
+```python
+SECRET_KEY = env.str('SECRET_KEY')
+
+DEBUG = env.bool('DEBUG')
+
+ALLOWED_HOSTS = tuple(env.list('ALLOWED_HOSTS'))
+
+DATABASES = {
+    'default': {
+        'ENGINE': env.str('ENGINE'),
+        'NAME': env.str('DATABASE_NAME'),
+        'USER': env.str('DATABASE_USER'),
+        'PASSWORD': env.str('DATABASE_PASSWORD'),
+        'HOST': env.str('DATABASE_HOST'),
+        'PORT': env.str('DATABASE_PORT')
+    }
+}
+
+
+
+```
 
