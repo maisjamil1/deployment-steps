@@ -229,6 +229,49 @@ DATABASES = {
 }
 
 
+```
+-create `stopANDshop_project/.env` inside it add:
+```python
+DEBUG=True
+SECRET_KEY=x%_&eqokja%xb5dp)9j4h+aowi5pp0a*8_a%e8i=p&98+6i@og
+ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0
+ENGINE=django.db.backends.postgresql
+DATABASE_NAME=mkdmtmix
+DATABASE_USER=mkdmtmix
+DATABASE_PASSWORD=edKVZLiTm3qRAlA3yu6xPLYke_p8z0Yk
+DATABASE_HOST=hattie.db.elephantsql.com
+DATABASE_PORT=5432
 
 ```
+
+-in the root create `static`file 
+- `python manage.py collectstatic`
+- `docker-compose down`
+- `docker-compose up -d` or `docker-compose up -d --build`
+- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+# heroku
+- `touch heroku.yml` inside it add :
+```python
+build:
+    docker:
+        web: Dockerfile
+release:
+    image: web
+    command:
+        - mkdir -p static
+        - python manage.py collectstatic --noinput
+run:
+    web: gunicorn stop_and_shop_back.wsgi
+
+```
+- in `.env` file change -->`DEBUG=False`
+- `docker-compose down`
+- `docker-compose up -d --build`
+- `git init` dont forget `.gitignore` file -->add `.vscode/` to the `.gitignore`
+- `git add .`
+- `git status`
+- `git commit -am''`
+
+
+
 
