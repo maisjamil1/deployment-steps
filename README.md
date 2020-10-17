@@ -276,6 +276,6 @@ run:
 - `heroku stack:set container`
 - `git push heroku master`
 - go to heroku website add:
-![img](img1.png)
+![img](img1.PNG)
 
 
