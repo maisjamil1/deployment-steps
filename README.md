@@ -150,3 +150,39 @@ services:
 ```
 - go to `settings.py` add to--->`ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1',]`
 - `docker-compose up -d`
+____________________________________________________________________________________
+# Deployment
+- Change ` docker-compose.yml`to:
+```python
+version: '3.8'
+
+services:
+    web:
+        build: .
+        command: gunicorn stop_and_shop_back.wsgi:application --bind 0.0.0.0:8000 --workers 4
+        volumes:
+            - .:/code
+        ports:
+            - "8000:8000"
+```
+- `docker-compose restart`
+- go to `settings` add-->:
+```python
+INSTALLED_APPS = [
+           .......
+
+    'whitenoise.runserver_nostatic',
+    ....
+  
+    'corsheaders',
+]
+
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+          ......
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
+```
+
