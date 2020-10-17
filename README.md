@@ -185,7 +185,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 ```
-- add the .env variables to  `settings.py` by add :
+- add the .env variables to  `settings.py`  add :
 ```python 
 import os
 import environ
