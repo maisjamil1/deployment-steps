@@ -278,4 +278,4 @@ run:
 - go to heroku website add:
 ![img](img1.PNG)
 
-
+ALLOWED_HOSTS----> localhost,127.0.0.1,0.0.0.0,.stopandshopapp.com,stopandshopapp.herokuapp.com
