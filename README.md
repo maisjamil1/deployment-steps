@@ -270,8 +270,12 @@ run:
 - `git init` dont forget `.gitignore` file -->add `.vscode/` to the `.gitignore`
 - `git add .`
 - `git status`
-- `git commit -am''`
+- `git commit -am' '`
 
-
+- `heroku create shopapp`
+- `heroku stack:set container`
+- `git push heroku master`
+- go to heroku website add:
+![img](img1.png)
 
 
