@@ -123,5 +123,30 @@ INSTALLED_APPS = [
 - go to the `SQL Browser` check if the data are there `SELECT * FROM shop_shop;`
 _____________________________________________________________________________
 ## Docker
-- `touch Dockerfile`
-- 
+- `touch Dockerfile` inside this file add:
+```python
+FROM python:3
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /code
+WORKDIR /code
+COPY requirements.txt /code/
+RUN pip install -r requirements.txt
+COPY . /code/
+```
+- `poetry export -f  requirements.txt  -o requirements.txt`
+- `touch docker-compose.yml`inside this file add:
+```python
+version: '3.8'
+
+services:
+    web:
+        build: .
+        command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/code
+        ports:
+            - "8000:8000"
+```
+- go to `settings.py` add to--->`ALLOWED_HOSTS = ['0.0.0.0','localhost','127.0.0.1',]`
+- `docker-compose up -d`
